@@ -1,106 +1,172 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora con jQuery</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Calculadora de Áreas y Perímetros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        label {
+            display: block;
+        }
+
+        /* Estilos adicionales para el contenido del div centrado */
+        .contenido {
+            background-color: #f0f0f0;
+            padding: 50px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="text-center">Calculadora con JQuery</h3>
-          </div>
-          <div class="card-body" style="background-color: black;">
-            <input type="text" class="form-control mb-2" id="result" disabled>
-            <div class="row">
+    <h1 style="text-align: center;">Calculadora de Áreas y Perímetros</h1>
+    <div class="container-fluid contenido">
 
-              <div class="col-3">
-                <button class="btn btn-danger btn-block col-xl-8 col-xl-8" id="btn-clear">C</button>
-              </div>
+        <h2>Selecciona una figura:</h2>
 
-              <div class="col-3">
-                <button class="btn btn-danger btn-block col-xl-8" id="btn-back">←</button>
-              </div>
-
-              <div class="col-3">
-                <button class="btn btn-secondary btn-block col-xl-12" id="btn-power">ON/OFF</button>
-              </div>
-
+        <form id="formCalculadora">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="calcularRectangulo" id="calcularRectangulo">
+                <label class="form-check-label" for="calcularRectangulo">
+                    Rectángulo 
+                </label>
             </div>
-            <div class="row">
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="calcularTriangulo" id="calcularTriangulo">
+                <label class="form-check-label" for="calcularTriangulo">
+                    Triángulo 
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="calcularPoligono" id="calcularPoligono">
+                <label class="form-check-label" for="calcularPoligono">
+                    Polígono regular 
+                </label>
+            </div>
+
+            <fieldset id="rectanguloFields" style="display: none;">
+                <legend>Ha seleccionado Rectángulo</legend>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                             <input type="number" name="rectanguloLado1" class="form-control" placeholder="Ingresa el valor del lado 1">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                            <input type="number" name="rectanguloLado2" class="form-control" placeholder="Ingresa el valor del lado 2">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="calcularAreaRectangulo"
+                        id="calcularAreaRectangulo">
+                    <label class="form-check-label" for="calcularAreaRectangulo">
+                        Calcular Área
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="calcularPerimetroRectangulo"
+                        id="calcularPerimetroRectangulo">
+                    <label class="form-check-label" for="calcularPerimetroRectangulo">
+                        Calcular Perímetro
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset id="trianguloFields" style="display: none;">
+                <legend>Ha seleccionado Triángulo</legend>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                                <input type="number" name="trianguloBase" class="form-control" placeholder="Ingrese el valor de la base" required="required">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                                <input type="number" name="trianguloAltura" class="form-control" placeholder="Ingrese el valor de la altura">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="calcularAreaTriangulo"
+                        id="calcularAreaTriangulo">
+                    <label class="form-check-label" for="calcularAreaTriangulo">
+                        Calcular Área
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="calcularPerimetroTriangulo"
+                        id="calcularPerimetroTriangulo">
+                    <label class="form-check-label" for="calcularPerimetroTriangulo">
+                        Calcular Perímetro
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset id="poligonoFields" style="display: none;">
+                <legend>Ha seleccionado Polígono Regular</legend>
                 
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-7">7</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-8">8</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-9">9</button>
-              </div>
-              
-              <div class="col-3">
-                <button class="btn btn-warning btn-block col-xl-8" id="btn-plus">+</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-4">4</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-5">5</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-6">6</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-warning btn-block col-xl-8" id="btn-minus">-</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-1">1</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-2">2</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-3">3</button>
-              </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                                <input type="number" name="poligonoLados" class="form-control" placeholder="Ingrese el número de lados">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                                <input type="number" name="poligonoMedidaLado" class="form-control" placeholder="Ingrese la medida de cada lado">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>
+                                <input type="number" name="poligonoApotema" class="form-control" placeholder="Ingrese el apotema">
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-              <div class="col-3">
-                <button class="btn btn-warning btn-block col-xl-8" id="btn-multiply">*</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-0">0</button>
-              </div>
-              <div class="col-3">
-                <button class="btn btn-light btn-block col-xl-8" id="btn-dot">.</button>
-              </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="calcularAreaPoligono"
+                        id="calcularAreaPoligono">
+                    <label class="form-check-label" for="calcularAreaPoligono">
+                        Calcular Área
+                    </label>
+                </div>
 
-              <div class="col-3">
-                <button class="btn btn-success btn-block col-xl-8" id="btn-evaluate">=</button>
-              </div>
-             
-              <div class="col-3">
-                <button class="btn btn-warning btn-block col-xl-8" id="btn-divide">/</button>
-              </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="calcularPerimetroPoligono"
+                        id="calcularPerimetroPoligono">
+                    <label class="form-check-label" for="calcularPerimetroPoligono">
+                        Calcular Perímetro
+                    </label>
+                </div>
+            </fieldset>
 
-            </div>
-          </div>
-        </div>
-      </div>
+            <button type="button" class="btn btn-primary mt-3 col-xl-12 col-lg-12 col-sm-12 col-12" id="calcularButton">Calcular</button>
+        </form>
     </div>
-  </div>
-  
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
