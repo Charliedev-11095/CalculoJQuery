@@ -29,21 +29,21 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="calcularRectangulo" id="calcularRectangulo">
                 <label class="form-check-label" for="calcularRectangulo">
-                    Rectángulo 
+                    Rectángulo
                 </label>
             </div>
 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="calcularTriangulo" id="calcularTriangulo">
                 <label class="form-check-label" for="calcularTriangulo">
-                    Triángulo 
+                    Triángulo
                 </label>
             </div>
 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="calcularPoligono" id="calcularPoligono">
                 <label class="form-check-label" for="calcularPoligono">
-                    Polígono regular 
+                    Polígono regular
                 </label>
             </div>
 
@@ -53,14 +53,16 @@
                     <div class="col">
                         <div class="form-group">
                             <label>
-                             <input type="number" name="rectanguloLado1" class="form-control" placeholder="Ingresa el valor del lado 1">
+                                <input type="number" name="rectanguloLado1" class="form-control"
+                                    placeholder="Ingresa el valor del lado 1">
                             </label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label>
-                            <input type="number" name="rectanguloLado2" class="form-control" placeholder="Ingresa el valor del lado 2">
+                                <input type="number" name="rectanguloLado2" class="form-control"
+                                    placeholder="Ingresa el valor del lado 2">
                             </label>
                         </div>
                     </div>
@@ -81,6 +83,14 @@
                         Calcular Perímetro
                     </label>
                 </div>
+
+                <!-- Resultados para el Rectángulo -->
+                <div id="resultadosRectangulo" style="display: none;">
+                    <hr>
+                    <p><strong>Resultados del Rectángulo:</strong></p>
+                    <p>Área: <span id="areaRectanguloResultado"></span></p>
+                    <p>Perímetro: <span id="perimetroRectanguloResultado"></span></p>
+                </div>
             </fieldset>
 
             <fieldset id="trianguloFields" style="display: none;">
@@ -89,14 +99,16 @@
                     <div class="col">
                         <div class="form-group">
                             <label>
-                                <input type="number" name="trianguloBase" class="form-control" placeholder="Ingrese el valor de la base" required="required">
+                                <input type="number" name="trianguloBase" class="form-control"
+                                    placeholder="Ingrese el valor de la base" required="required">
                             </label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label>
-                                <input type="number" name="trianguloAltura" class="form-control" placeholder="Ingrese el valor de la altura">
+                                <input type="number" name="trianguloAltura" class="form-control"
+                                    placeholder="Ingrese el valor de la altura">
                             </label>
                         </div>
                     </div>
@@ -110,37 +122,39 @@
                     </label>
                 </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="calcularPerimetroTriangulo"
-                        id="calcularPerimetroTriangulo">
-                    <label class="form-check-label" for="calcularPerimetroTriangulo">
-                        Calcular Perímetro
-                    </label>
+                <!-- Resultados para el Triángulo -->
+                <div id="resultadosTriangulo" style="display: none;">
+                    <hr>
+                    <p><strong>Resultados del Triángulo:</strong></p>
+                    <p>Área: <span id="areaTrianguloResultado"></span></p>
                 </div>
             </fieldset>
 
             <fieldset id="poligonoFields" style="display: none;">
                 <legend>Ha seleccionado Polígono Regular</legend>
-                
+
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                             <label>
-                                <input type="number" name="poligonoLados" class="form-control" placeholder="Ingrese el número de lados">
+                                <input type="number" name="poligonoLados" class="form-control"
+                                    placeholder="Ingrese el número de lados">
                             </label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label>
-                                <input type="number" name="poligonoMedidaLado" class="form-control" placeholder="Ingrese la medida de cada lado">
+                                <input type="number" name="poligonoMedidaLado" class="form-control"
+                                    placeholder="Ingrese la medida de cada lado">
                             </label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label>
-                                <input type="number" name="poligonoApotema" class="form-control" placeholder="Ingrese el apotema">
+                                <input type="number" name="poligonoApotema" class="form-control"
+                                    placeholder="Ingrese el apotema">
                             </label>
                         </div>
                     </div>
@@ -161,11 +175,22 @@
                         Calcular Perímetro
                     </label>
                 </div>
+
+                <!-- Resultados para el Polígono Regular -->
+                <div id="resultadosPoligono" style="display: none;">
+                    <hr>
+                    <p><strong>Resultados del Polígono Regular:</strong></p>
+                    <p>Área: <span id="areaPoligonoResultado"></span></p>
+                    <p>Perímetro: <span id="perimetroPoligonoResultado"></span></p>
+                </div>
             </fieldset>
 
-            <button type="button" class="btn btn-primary mt-3 col-xl-12 col-lg-12 col-sm-12 col-12" id="calcularButton">Calcular</button>
+            <button type="button" class="btn btn-primary mt-3 col-xl-12 col-lg-12 col-sm-12 col-12"
+                id="calcularButton">Calcular</button>
         </form>
+
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 
